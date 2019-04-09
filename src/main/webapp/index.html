@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Avaliação Desenvolvedor Sistemas Java</title>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular-resource.js"></script>
+<script type="text/javascript" src="app/app.js"></script>
+<script type="text/javascript" src="app/general.controller.js"></script>
+<script type="text/javascript" src="app/credito.service.js"></script>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/angular-locale_pt-br.js"></script>
+</head>
+<body ng-app="crudApp" ng-controller="GeneralController">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">Avaliação Desenvolvedor Sistemas-Java :: limitecreditotest 1.0:: Cicero Vieira</div>
+		<div class="panel-body">
+			<form class="col-md-4" ng-submit="saveCredito()">
+				<div class="form-group">
+					<label for="creditoName">Nome Cliente</label> 
+					<input type="text"
+						ng-model="credito.name" class="form-control" id="creditoName"
+						placeholder="Nome Cliente" required >
+				</div>
+				<div class="form-group">
+					<label for="creditoLimite">Limite de crédito</label> 
+					<input type="number"
+						ng-model="credito.limite" class="form-control"
+						id="creditoLimite" placeholder="Limite de crédito" required>
+				</div>
+
+				<div class="form-group">
+					<label for="creditoRisco">Risco</label> 
+					<select ng-model="credito.risco" class="form-control" id="creditoRisco"				
+					 ng-change="change(credito)" required>
+					  <option value="">-- Selecione --</option>
+					  <option>A</option>
+					  <option>B</option>
+					  <option>C</option>   
+					</select>
+				</div>
+				
+				<div class="form-group">
+					<label for="creditoPorcentagem">Porcentagem (%) juros</label> 
+					<input type="text"
+						ng-model="credito.porcentagem" class="form-control"
+						id="creditoPorcentagem" placeholder="Porcentagem (%) juros" required readonly>
+				</div>
+				
+				<div class="form-group">
+					<label for="creditoValorjuros">Valor(R$) Juros</label> 
+					<input type="number"
+						ng-model="credito.valorjuros" class="form-control"
+						id="creditoValorjuros" placeholder="Valor Juros" required readonly>
+				</div>
+				
+				<div class="form-group">
+					<label for="creditoValorcomjuros">Valor(R$) Com Juros</label> 
+					<input type="number"
+						ng-model="credito.valorcomjuros" class="form-control"
+						id="creditoValorcomjuros" placeholder="Valor(R$) Com Juros" required readonly>
+				</div>
+				
+
+
+				<button type="submit" class="btn btn-default">{{buttonText}}</button>
+				
+			</form>
+
+			<div class="table-responsive col-md-8">
+				<table class="table table-striped">
+					<tr>
+						<th>Nome Cliente</th>
+						<th>Limite de crédito</th>
+						<th>Risco</th>
+						<th>Porcentagem(%) Juros</th>
+						<th>Valor(R$) Juros</th>
+						<th>Valor(R$) Com Juros</th>
+						<th></th>
+					</tr>
+					<tr ng-repeat="credito in creditos">
+						<td>{{credito.name}}</td>
+						<td>{{credito.limite | currency:'R$'}}</td>
+						<td>{{credito.risco}}</td>
+						<td>{{credito.porcentagem | number}}</td>
+						<td>{{credito.valorjuros | currency:'R$'}}</td>
+						<td>{{credito.valorcomjuros | currency:'R$'}}</td>
+						<td>
+							<button type="button" class="btn btn-default"
+								ng-click="updateCreditoInit(credito)">
+								<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+							</button>
+							<button type="button" class="btn btn-default"
+								ng-click="deleteCredito(credito)">
+								<span class="glyphicon glyphicon-remove-circle"
+									aria-hidden="true"></span>
+							</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
