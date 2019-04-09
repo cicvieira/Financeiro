@@ -1,6 +1,5 @@
 --- Ferramentas 
 Cicero Vieira da Silva - Email cicvieira@yahoo.com.br
-WhatsApp +5511 94011-3640
 
 - Spring Boot Version 1.5.4.RELEASE
 - Spring Tool Suite 4
