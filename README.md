@@ -1,6 +1,4 @@
 --- Ferramentas 
-Cicero Vieira da Silva - Email cicvieira@yahoo.com.br
-
 - Spring Boot Version 1.5.4.RELEASE
 - Spring Tool Suite 4
 - AngularJS 1.6.3
